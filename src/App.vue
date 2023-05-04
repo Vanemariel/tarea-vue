@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>{{ contador }}</h1>
+    <button @click="incrementarContador">Incrementar</button>
+    <button @click="decrementarContador">Decrementar</button>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+<script setup>
+  import { ref } from 'vue';
+  
+  const contador = ref(0);
+  
+  function incrementarContador() {
+    contador.value++;
   }
-}
+  
+  function decrementarContador() {
+    if (contador.value > 0) {
+      contador.value--;
+    }
+  }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
